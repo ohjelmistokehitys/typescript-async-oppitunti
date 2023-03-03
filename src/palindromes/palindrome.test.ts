@@ -28,6 +28,6 @@ describe('isPalindrome', () => {
 
 describe('findTwoWordPalindromes', () => {
     test('returns all two word combinations that make a palindrome', () => {
-        expect(findTwoWordPalindromes(['hello', 'car', 'world', 'race'])).toEqual(['racecar']);
+        expect([...findTwoWordPalindromes(['hello', 'car', 'world', 'race'])]).toEqual(['racecar']);
     });
 });
