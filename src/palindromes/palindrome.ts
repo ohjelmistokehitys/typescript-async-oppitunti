@@ -16,14 +16,12 @@ export function isPalindrome(text: string): boolean {
     return true;
 }
 
-export function findTwoWordPalindromes(words: string[]): string[] {
-    let palindromes = [];
+export function* findTwoWordPalindromes(words: string[]): Generator<string> {
     for (let w1 of words) {
         for (let w2 of words) {
             if (isPalindrome(w1 + w2)) {
-                palindromes.push(w1 + w2);
+                yield w1 + w2;
             }
         }
     }
-    return palindromes;
 }
