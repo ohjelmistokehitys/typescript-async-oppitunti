@@ -16,6 +16,17 @@ export function isPalindrome(text: string): boolean {
     return true;
 }
 
+export function* findPalindromesWith(search: string, words: string[]): Generator<string> {
+    for (let word of words) {
+        if (isPalindrome(word + search)) {
+            yield word + search;
+        }
+        if (isPalindrome(search + word)) {
+            yield search + word;
+        }
+    }
+}
+
 export function* findTwoWordPalindromes(words: string[]): Generator<string> {
     /* Palindromes start and end with the same character, so we create two
      * maps to group words by their first and last chars. */
