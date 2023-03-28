@@ -1,7 +1,7 @@
 /* Visit https://aka.ms/tsconfig to read more about this file */
 {
     "compilerOptions": {
-        "target": "es2016", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+        "target": "es2017", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
         "rootDir": "src", /* Specify the root folder within your source files. */
         "module": "CommonJS", /* You very likely want "CommonJS" for node projects. */
         "outDir": "./build/", /* Specify an output folder for all emitted files. */
