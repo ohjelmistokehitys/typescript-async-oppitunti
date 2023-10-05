@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "ts-node src/server.ts",
     "test": "jest --verbose --coverage"
   },
   "devDependencies": {

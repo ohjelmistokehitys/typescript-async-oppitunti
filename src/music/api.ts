@@ -14,11 +14,6 @@ export async function getArtists(): Promise<Omit<Artist, 'albums'>[]> {
     return json.artists;
 }
 
-async function sleep(millis: number): Promise<void> {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => resolve(), millis);
-    })
-}
 
 /**
  * Individual endpoint returns albums, too.
