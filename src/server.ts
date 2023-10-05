@@ -1,6 +1,7 @@
 // https://www.npmjs.com/package/express
 import express from 'express';
 import { getArtist, getArtists } from './music/api';
+import { Artist } from './music/types';
 
 const app = express();
 const PORT = process.env.PORT ?? 3000;
@@ -57,16 +58,17 @@ app.get('/artists', async (req, res) => {
 
 app.get('/artists/albums', async (req, res) => {
     try {
-        let text = '';
         let artists = await getArtists();
+        let promises = artists.map(a => getArtist(a));
 
-        for (let a of artists) {
-            let artist = await getArtist(a);
-            let titles = artist.albums.map(album => `- ${album.title}`);
-            text += artist.name + '\n' + titles.join('\n') + '\n\n';
-        }
-
-        res.contentType('text/plain').send(text);
+        Promise.all(promises).then((artists) => {
+            let text = '';
+            for (let artist of artists) {
+                let titles = artist.albums.map(album => `- ${album.title}`);
+                text += artist.name + '\n' + titles.join('\n') + '\n\n';
+            }
+            res.contentType('text/plain').send(text);
+        });
     } catch (e) {
         console.error(e);
         res.status(500).send('internal server error');
